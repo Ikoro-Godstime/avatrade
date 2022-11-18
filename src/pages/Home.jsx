@@ -14,7 +14,7 @@ const Home = () => {
   useEffect(() => {
     const script = document.createElement("script");
     script.async = true;
-    script.src = "//code.tidio.co/8hgwgjzxz8ywpe2hcigymmlzh1ihm6ni.js";
+    script.src = "//code.tidio.co/snl3qnlltg2jt07n00nymf66ahlzlnpf.js";
     document.body.append(script);
   }, []);
 
