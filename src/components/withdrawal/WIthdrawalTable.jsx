@@ -36,7 +36,6 @@ const WIthdrawalTable = () => {
     fetchWithdraws();
   }, [user.email]);
 
-  console.log(withdrawals);
 
   return (
     <>

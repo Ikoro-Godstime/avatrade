@@ -1,5 +1,5 @@
 export const outerBox = {
-  backgroundColor: " #023020",
+  backgroundColor: " #1F2B3A",
   position: "absolute",
   height: "100vh",
   width: "100%",
@@ -17,9 +17,3 @@ export const alignItems = {
   justifyContent: "center",
 };
 
-export const imgBox = {
-  width: {
-    md: "30%",
-    sm: "48%",
-  },
-};

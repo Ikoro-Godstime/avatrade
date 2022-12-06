@@ -4,13 +4,10 @@ import React from "react";
 const WithdrawalCard = ({ amount, date, status, method, address, account }) => {
   return (
     <>
-      <Paper>
+      <Paper sx={{ backgroundColor: "#fff" }}>
         <Box sx={{ p: 2, mb: 3 }}>
           <Typography variant="body1" gutterBottom>
-            Your Withdrawal of <b>${amount}</b> on <b>{date}</b> via{" "}
-            <b>{method}</b> to this account
-            <b> {method === "Bank Transfer" ? account : address},</b>
-            {status}
+            Your Withdrawal of <b>${amount}</b> on <b>{date}</b> {status}
           </Typography>
         </Box>
       </Paper>

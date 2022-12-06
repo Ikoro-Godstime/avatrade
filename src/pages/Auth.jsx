@@ -1,9 +1,10 @@
 import { Container, Paper, Box, Tab, Tabs, Typography } from "@mui/material";
-import { outerBox, paperStyle, imgBox, alignItems } from "../style/authStyle";
-import { Link } from "react-router-dom";
+import { outerBox, paperStyle, alignItems } from "../style/authStyle";
 import { useState, useEffect } from "react";
 import RegisterForm from "../components/register-form/Form";
 import LoginForm from "../components/login-form/Form";
+import { symbols } from "../utlis/coins";
+import { TickerTape } from "react-tradingview-embed";
 
 const TabPanel = (props) => {
   const { children, value, index, ...other } = props;
@@ -36,39 +37,39 @@ const Auth = () => {
   }, []);
 
   return (
-    <Box sx={outerBox}>
-      <Container maxWidth="sm">
-        <Box sx={paperStyle}>
-          <Paper sx={paperStyle}>
-            <Box sx={alignItems}>
-              <Box sx={imgBox}>
-                <Link to="/">
-                  <img src="/img/logo.svg" alt="logo" />
-                </Link>
+    <>
+      <Box sx={outerBox}>
+        <Container maxWidth="sm">
+          <Box sx={paperStyle}>
+            <Paper sx={paperStyle}>
+              <Box>
+                <Tabs value={value} onChange={handleChange} centered>
+                  <Tab label="Register" />
+                  <Tab label="Login" />
+                </Tabs>
+                <TabPanel value={value} index={0}>
+                  <RegisterForm />
+                </TabPanel>
+                <TabPanel value={value} index={1}>
+                  <LoginForm />
+                </TabPanel>
               </Box>
-            </Box>
-            <Box>
-              <Tabs value={value} onChange={handleChange} centered>
-                <Tab label="Register" />
-                <Tab label="Login" />
-              </Tabs>
-              <TabPanel value={value} index={0}>
-                <RegisterForm />
-              </TabPanel>
-              <TabPanel value={value} index={1}>
-                <LoginForm />
-              </TabPanel>
-            </Box>
-            <Box sx={alignItems}>
-              <Typography variant="caption" textAlign="center" gutterBottom>
-                © Highstrike.us
-              </Typography>
-            </Box>
-          </Paper>
-        </Box>
-      </Container>
-    </Box>
+              <Box sx={alignItems}>
+                <Typography variant="caption" textAlign="center" gutterBottom>
+                  © avatrade.cc
+                </Typography>
+              </Box>
+            </Paper>
+          </Box>
+        </Container>
+      </Box>
+      <Box>
+        <TickerTape widgetProps={{ symbols }} />
+      </Box>
+    </>
   );
 };
 
 export default Auth;
+
+

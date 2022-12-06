@@ -1,60 +1,45 @@
 import * as React from "react";
 import PropTypes from "prop-types";
-import {
-  AppBar,
-  Box,
-  Drawer,
-  IconButton,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Toolbar,
-  CssBaseline,
-} from "@mui/material";
-import { MdMenu, MdPowerOff } from "react-icons/md";
-import { FaUserCircle } from "react-icons/fa";
-import { links } from "./sidebar";
-import { useNavigate } from "react-router-dom";
-import { signOut } from "firebase/auth";
-import { auth } from "../../firebase";
-import LightDark from "../toggle/LightDark";
+import { AppBar, Box, Drawer, Toolbar, CssBaseline } from "@mui/material";
+import Navbar from "./Navbar";
+import SideNav from "./SideNav";
+// import firebase functions
+import { doc, getDoc } from "firebase/firestore";
+import { store } from "../../firebase";
 
-const drawerWidth = 240;
+// user context
+import { UserContext } from "../../context/UserContext";
+
+const drawerWidth = 340;
 
 const Layout = (props) => {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-
-  const navigate = useNavigate();
+  // details
+  const [details, setDetails] = React.useState(null);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
-  const handleLogout = () => {
-    sessionStorage.removeItem("token");
-    signOut(auth);
-    navigate("/");
-  };
+  /// user context
+  const { user } = React.useContext(UserContext);
 
-  const drawer = (
-    <div>
-      <List>
-        {links.map((link) => (
-          <ListItem
-            button
-            key={link.text}
-            sx={{ mt: 2 }}
-            onClick={() => navigate(`${link.path}`)}
-          >
-            <ListItemIcon sx={{ mr: 0 }}>{link.icon}</ListItemIcon>
-            <ListItemText primary={link.text} sx={{ ml: 0 }} />
-          </ListItem>
-        ))}
-      </List>
-    </div>
-  );
+  // useEffect
+  React.useEffect(() => {
+    const fetchUserDetails = async () => {
+      try {
+        const docRef = doc(store, "/users", `${user.email}`);
+        const userDetails = await getDoc(docRef);
+
+        return setDetails(userDetails.data());
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchUserDetails();
+  }, [details, user.email]);
 
   const container =
     window !== undefined ? () => window().document.body : undefined;
@@ -68,28 +53,11 @@ const Layout = (props) => {
           sx={{
             width: { sm: `calc(100% - ${drawerWidth}px)` },
             ml: { sm: `${drawerWidth}px` },
+            bgcolor: "#fff",
           }}
+          elevation={1}
         >
-          <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              edge="start"
-              onClick={handleDrawerToggle}
-              sx={{ mr: 2, display: { sm: "none" } }}
-            >
-              <MdMenu color="#fff" />
-            </IconButton>
-            <Box>
-              <img src="/img/logo.svg" alt="logo" />
-            </Box>
-            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-              <LightDark />
-              <IconButton onClick={() => navigate("/account")}>
-                <FaUserCircle />
-              </IconButton>
-            </Box>
-          </Toolbar>
+          <Navbar details={details} openMobile={handleDrawerToggle} />
         </AppBar>
         <Box
           component="nav"
@@ -113,17 +81,7 @@ const Layout = (props) => {
               },
             }}
           >
-            {drawer}
-            <Box>
-              <List>
-                <ListItem button onClick={handleLogout}>
-                  <ListItemIcon>
-                    <MdPowerOff />
-                  </ListItemIcon>
-                  <ListItemText primary="Logout" />
-                </ListItem>
-              </List>
-            </Box>
+            <SideNav details={details} />
           </Drawer>
           <Drawer
             variant="permanent"
@@ -136,17 +94,7 @@ const Layout = (props) => {
             }}
             open
           >
-            {drawer}
-            <Box>
-              <List>
-                <ListItem button onClick={handleLogout}>
-                  <ListItemIcon>
-                    <MdPowerOff />
-                  </ListItemIcon>
-                  <ListItemText primary="Logout" />
-                </ListItem>
-              </List>
-            </Box>
+            <SideNav details={details} />
           </Drawer>
         </Box>
         <Box

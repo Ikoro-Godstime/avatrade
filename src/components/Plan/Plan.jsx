@@ -31,7 +31,7 @@ const Plan = () => {
           <Grid container spacing={3}>
             {plans.map((plan) => (
               <Grid item xs={12} md={4}>
-                <Paper>
+                <Paper sx={{ backgroundColor: "#fff" }}>
                   <Box sx={{ backgroundColor: "dodgerBlue", p: 3 }}>
                     <Typography
                       variant="h5"

@@ -41,7 +41,7 @@ const Prices = () => {
       <Grid container spacing={2}>
         <Grid item xs={12} md={3}>
           {details ? (
-            <Paper sx={{ p: 2 }}>
+            <Paper sx={{ p: 2, backgroundColor: "#fff" }}>
               <Box sx={{ display: "flex", alignItems: "center" }}>
                 <Box>
                   <FaDownload size="31px" color="#ffad46" />
@@ -63,7 +63,7 @@ const Prices = () => {
         </Grid>
         <Grid item xs={12} md={3}>
           {details ? (
-            <Paper sx={{ p: 2 }}>
+            <Paper sx={{ p: 2, backgroundColor: "#fff" }}>
               <Box sx={{ display: "flex", alignItems: "center" }}>
                 <Box>
                   <FaDatabase size="31px" color="#31ce36" />
@@ -85,7 +85,7 @@ const Prices = () => {
         </Grid>
         <Grid item xs={12} md={3}>
           {details ? (
-            <Paper sx={{ p: 2 }}>
+            <Paper sx={{ p: 2, backgroundColor: "#fff" }}>
               <Box sx={{ display: "flex", alignItems: "center" }}>
                 <Box>
                   <FaGift size="31px" color="#f25961" />
@@ -105,7 +105,7 @@ const Prices = () => {
         </Grid>
         <Grid item xs={12} md={3}>
           {details ? (
-            <Paper sx={{ p: 2 }}>
+            <Paper sx={{ p: 2, backgroundColor: "#fff" }}>
               <Box sx={{ display: "flex", alignItems: "center" }}>
                 <Box>
                   <FaUsers size="31px" color="#1572e8" />
@@ -127,7 +127,7 @@ const Prices = () => {
         </Grid>
         <Grid item xs={12} md={3}>
           {details ? (
-            <Paper sx={{ p: 2 }}>
+            <Paper sx={{ p: 2, backgroundColor: "#fff" }}>
               <Box sx={{ display: "flex", alignItems: "center" }}>
                 <Box>
                   <FaCreditCard size="31px" color="#6861ce" />
@@ -149,7 +149,7 @@ const Prices = () => {
         </Grid>
         <Grid item xs={12} md={3}>
           {details ? (
-            <Paper sx={{ p: 2 }}>
+            <Paper sx={{ p: 2, backgroundColor: "#fff" }}>
               <Box sx={{ display: "flex", alignItems: "center" }}>
                 <Box>
                   <FaEnvelope size="31px" color="#f25961" />
@@ -168,7 +168,7 @@ const Prices = () => {
         </Grid>
         <Grid item xs={12} md={3}>
           {details ? (
-            <Paper sx={{ p: 2 }}>
+            <Paper sx={{ p: 2, backgroundColor: "#fff" }}>
               <Box sx={{ display: "flex", alignItems: "center" }}>
                 <Box>
                   <FaEnvelopeOpen size="31px" color="#1572e8" />

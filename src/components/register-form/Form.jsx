@@ -20,6 +20,7 @@ import {
   OutlinedInput,
   InputAdornment,
   IconButton,
+  Typography,
 } from "@mui/material";
 import { MdVisibilityOff, MdVisibility } from "react-icons/md";
 
@@ -118,9 +119,10 @@ const RegisterForm = () => {
         verified: user.emailVerified,
         createdAt: user.metadata.creationTime,
         uid: user.uid,
+        block: false,
       });
       // toast notification
-      toast.success("Welcome to highstrike,You can now login", {
+      toast.success("Welcome to Avatrade,You can now login", {
         position: "top-center",
         theme: "colored",
       });
@@ -154,6 +156,14 @@ const RegisterForm = () => {
   return (
     <Box sx={{ p: 2 }}>
       <Box>
+        <Typography variant="h6" sx={{ mb: 1, color: "#fff" }}>
+          Create An Account
+        </Typography>
+        <Typography variant="body2" color="GrayText" sx={{ mb: 1 }}>
+          Sign up with your email and get started with your free account.
+        </Typography>
+      </Box>
+      <Box>
         <Grid container columnSpacing={2} rowSpacing={1}>
           <Grid item xs={12} md={6}>
             <TextField
@@ -183,6 +193,7 @@ const RegisterForm = () => {
           name="email"
           margin="normal"
           fullWidth
+          sx={{ mb: 1 }}
         />
         <TextField
           type="tel"
@@ -191,8 +202,9 @@ const RegisterForm = () => {
           name="telephone"
           margin="normal"
           fullWidth
+          sx={{ mb: 1 }}
         />
-        <Grid container columnSpacing={2} rowSpacing={1}>
+        <Grid container columnSpacing={2} rowSpacing={1} sx={{ my: 1 }}>
           <Grid item xs={12} md={6}>
             <FormControl variant="outlined" fullWidth>
               <InputLabel htmlFor="password">Password</InputLabel>

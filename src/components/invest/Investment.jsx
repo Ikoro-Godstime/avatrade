@@ -59,22 +59,23 @@ const Investment = () => {
         <Grid container spacing={3}>
           {plans.map((plan) => (
             <Grid item xs={12} md={5}>
-              <Paper sx={{ p: 2 }}>
+              <Paper sx={{ p: 2, backgroundColor: "#fff" }}>
                 <Box>
                   <Typography
-                    sx={{ fontWeight: "bold" }}
                     variant="h6"
                     gutterBottom
                     component="div"
+                    color="GrayText"
                   >
                     {plan.title}
                   </Typography>
                   <Box sx={{ display: "flex", alignItems: "center", my: 2 }}>
                     <sub>$</sub>
                     <Typography
-                      variant="h4"
+                      variant="h6"
                       component="div"
                       gutterBottom
+                      color="dodgerblue"
                       sx={{ fontWeight: "bold" }}
                     >
                       {plan.price}

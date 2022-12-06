@@ -1,53 +1,32 @@
-import {
-  MdDashboard,
-  MdAccountCircle,
-  MdPayment,
-  MdDownload,
-  MdCreditScore,
-  MdBusinessCenter,
-  MdRecycling,
-  MdHeadset,
-} from "react-icons/md";
-
+import { MdOutlineDashboard } from "react-icons/md";
+import { RiExchangeDollarLine } from "react-icons/ri";
+import { BsPersonCheck } from "react-icons/bs";
+// import { RiNodeTree } from "react-icons/ri";
+import { FaExchangeAlt } from "react-icons/fa";
 export const links = [
   {
-    text: "Dashboard",
+    text: "Main dashboard",
     path: "/dashboard",
-    icon: <MdDashboard />,
+    icon: <MdOutlineDashboard />,
   },
   {
-    text: "Account Settings",
+    text: "Personal Profile",
     path: "/account",
-    icon: <MdAccountCircle />,
+    icon: <BsPersonCheck />,
   },
   {
-    text: "Fund Wallet",
-    path: "/deposit",
-    icon: <MdPayment />,
-  },
-  {
-    text: "Support",
-    path: "/support",
-    icon: <MdHeadset />,
-  },
-  {
-    text: "Invest",
+    text: "Investment Plans",
     path: "/invest",
-    icon: <MdDownload />,
+    icon: <RiExchangeDollarLine />,
   },
   {
-    text: "Withdraw",
-    path: "/withdraw",
-    icon: <MdCreditScore />,
-  },
-  {
-    text: "Transactions",
+    text: "Transaction History",
     path: "/transactions",
-    icon: <MdBusinessCenter />,
+    icon: <FaExchangeAlt />,
   },
-  {
-    text: "Refer Users",
-    path: "/refer",
-    icon: <MdRecycling />,
-  },
+  // {
+  //   text: "Refer Users",
+  //   path: "/referrals",
+  //   icon: <RiNodeTree />,
+  // },
 ];

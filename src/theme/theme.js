@@ -5,11 +5,14 @@ import { createTheme } from "@mui/material/styles";
 export const theme = createTheme({
   palette: {
     primary: {
-      main: "#023020",
+      main: "#037DFF",
+    },
+    background: {
+      paper: "#101924",
     },
   },
   typography: {
-    fontFamily: ["Quicksand", "sans-serif"].join(","),
+    fontFamily: ["Jost", "sans-serif"].join(","),
   },
   components: {
     MuiButton: {
@@ -53,75 +56,14 @@ export const theme = createTheme({
         },
       },
     },
-  },
-});
-
-// ? Create Dark Theme For Website
-export const darkTheme = createTheme({
-  palette: {
-    mode: "dark",
-    background: {
-      default: "#192734",
-      paper: "#15202B",
-    },
-  },
-  typography: {
-    fontFamily: ["Quicksand", "sans-serif"].join(","),
-  },
-  components: {
-    MuiButton: {
+    MuiListItemText: {
       styleOverrides: {
-        root: {
-          textTransform: "capitalize",
-        },
-      },
-      defaultProps: {
-        disableRipple: true,
-        disableElevation: true,
-        variant: "contained",
-      },
-    },
-    MuiTabs: {
-      styleOverrides: {
-        root: {
-          textTransform: "capitalize",
-        },
-      },
-    },
-    MuiTextField: {
-      defaultProps: {
-        variant: "outlined",
-        size: "small",
-      },
-    },
-  },
-});
-
-export const landingPageTheme = createTheme({
-  palette: {},
-  typography: {
-    fontFamily: ["Roboto", "sans-serif"].join(","),
-  },
-  components: {
-    MuiButton: {
-      styleOverrides: {
-        root: {
-          textTransform: "capitalize",
-        },
-      },
-      defaultProps: {
-        disableRipple: true,
-        disableElevation: true,
-        variant: "contained",
-      },
-    },
-
-    MuiAppBar: {
-      styleOverrides: {
-        root: {
-          backgroundColor: "#fff",
+        primary: {
+          fontWeight: "500",
+          fontSize: "15px",
         },
       },
     },
   },
 });
+

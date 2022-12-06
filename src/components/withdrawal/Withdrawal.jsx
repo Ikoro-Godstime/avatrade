@@ -2,8 +2,7 @@ import React, { useState, useContext, useRef } from "react";
 import {
   Box,
   Button,
-  Card,
-  CardContent,
+  Alert,
   Grid,
   Typography,
   Modal,
@@ -11,6 +10,12 @@ import {
   Backdrop,
   Divider,
   TextField,
+  IconButton,
+  Tooltip,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
@@ -18,6 +23,9 @@ import { store } from "../../firebase";
 import { toast } from "react-toastify";
 import { options } from "./options";
 import { UserContext } from "../../context/UserContext";
+import { GrTransaction } from "react-icons/gr";
+import { AiFillBank } from "react-icons/ai";
+import { BsCurrencyBitcoin } from "react-icons/bs";
 
 const Withdrawal = () => {
   toast.configure();
@@ -27,25 +35,26 @@ const Withdrawal = () => {
   const bankNameRef = useRef();
   const accountNameRef = useRef();
   const accountNumberRef = useRef();
-  const [value, setValue] = useState("");
+  const bankBranchRef = useRef();
+  const bankLocationRef = useRef();
+  const swissRef = useRef();
+  const coinRef = useRef();
   // function to set modal open and close
-  const [open, setOpen] = useState(false);
-  const handleClose = () => setOpen(false);
+  const [bankModal, setBankModal] = useState(false);
+  const [cryptoModal, setCryptoModal] = useState(false);
+  // function to open modal
+  const openBankModal = () => setBankModal(true);
+  const closeBankModal = () => setBankModal(false);
+  const openCryptoModal = () => setCryptoModal(true);
+  const closeCryptoModal = () => setCryptoModal(false);
 
   // use the react router Hook
   const navigate = useNavigate();
 
   const { user } = useContext(UserContext);
 
-  // function to get value
-  const getValue = (id) => {
-    const method = options.filter((option) => id === option.name);
-    setValue(method[0].name);
-    setOpen(true);
-  };
-
   // function to get the method of withdraw and address
-  const withdrawMethod = async () => {
+  const bankMethod = async () => {
     try {
       //  first create the collection ref
       const collectionRef = collection(
@@ -54,25 +63,43 @@ const Withdrawal = () => {
         `/${user.email}`,
         "withdrawal"
       );
-      if (value === "Bank Transfer") {
-        await addDoc(collectionRef, {
-          amount: withdrawalAmtRef.current.value,
-          date: serverTimestamp(),
-          bankName: bankNameRef.current.value,
-          approved: false,
-          method: value,
-          accountName: accountNameRef.current.value,
-          accountNumber: accountNumberRef.current.value,
-        });
-      } else {
-        await addDoc(collectionRef, {
-          amount: withdrawalAmtRef.current.value,
-          date: serverTimestamp(),
-          address: addressRef.current.value,
-          approved: false,
-          method: value,
-        });
-      }
+      await addDoc(collectionRef, {
+        amount: withdrawalAmtRef.current.value,
+        date: serverTimestamp(),
+        bankName: bankNameRef.current.value,
+        approved: false,
+        accountName: accountNameRef.current.value,
+        accountNumber: accountNumberRef.current.value,
+        swissNumber: swissRef.current.value,
+        bankBranch: bankBranchRef.current.value,
+        bankLocation: bankLocationRef.current.value,
+      });
+
+      toast.success("Order Sent", { theme: "colored", position: "top-center" });
+
+      navigate("/dashboard");
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  // function to get the method of withdraw and address
+  const cryptoMethod = async () => {
+    try {
+      //  first create the collection ref
+      const collectionRef = collection(
+        store,
+        "users",
+        `/${user.email}`,
+        "withdrawal"
+      );
+      await addDoc(collectionRef, {
+        amount: withdrawalAmtRef.current.value,
+        date: serverTimestamp(),
+        address: addressRef.current.value,
+        approved: false,
+        coin: coinRef.current.value,
+      });
 
       toast.success("Order Sent", { theme: "colored", position: "top-center" });
 
@@ -89,135 +116,222 @@ const Withdrawal = () => {
     left: "50%",
     transform: "translate(-50%, -20%)",
     width: { xs: "90%", md: 600 },
-    bgcolor: "background.paper",
+    bgcolor: "#fff",
     boxShadow: 24,
     p: { xs: 2, md: 3 },
   };
 
   return (
     <div>
-      <Typography variant="h5" component="div" gutterBottom>
-        Request Withdrawal
-      </Typography>
-      <Box sx={{ mt: 3 }}>
-        <Grid container spacing={3}>
-          {options.map((option) => (
-            <Grid item xs={12} md={3} key={option.name}>
-              <Card>
-                <CardContent>
-                  <Box
-                    sx={{ display: "flex", justifyContent: "space-between" }}
-                  >
-                    <Box sx={{ width: "12%" }}>
-                      <img src={option.icon} alt={option.name} />
-                    </Box>
-                    <Typography variant="h6" component="div">
-                      {option.name}
-                    </Typography>
-                  </Box>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      mb: 2,
-                      mt: 2,
-                    }}
-                  >
-                    <Typography variant="body1">Minimum Amount</Typography>
-                    <Typography variant="subtitle1">
-                      {option.minAmount}
-                    </Typography>
-                  </Box>
-                  <Box sx={{ mt: 4 }}>
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      fullWidth
-                      onClick={() => getValue(option.name)}
-                    >
-                      Request Withdrawal
-                    </Button>
-                  </Box>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <GrTransaction size="40px" color="#364A63" />
       </Box>
-
+      <Typography
+        variant="h6"
+        textAlign="center"
+        gutterBottom
+        sx={{ color: "#364A63" }}
+      >
+        Withdrawal Funds
+      </Typography>
+      <Box
+        sx={{
+          mt: 3,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Tooltip title="Withdraw Via Bank Transfer" arrow>
+          <IconButton
+            sx={{ mx: 2, border: "1px solid dodgerBlue" }}
+            onClick={openBankModal}
+          >
+            <AiFillBank />
+          </IconButton>
+        </Tooltip>
+        <Tooltip title="Withdraw Via Cryptocurrency" arrow>
+          <IconButton
+            sx={{ border: "1px solid dodgerBlue" }}
+            onClick={openCryptoModal}
+          >
+            <BsCurrencyBitcoin />
+          </IconButton>
+        </Tooltip>
+      </Box>
       <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        open={open}
-        onClose={handleClose}
+        open={bankModal}
+        onClose={closeBankModal}
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
           timeout: 500,
         }}
       >
-        <Fade in={open}>
+        <Fade in={bankModal}>
           <Box sx={style}>
             <Typography
-              id="transition-modal-title"
-              variant="body1"
+              variant="h5"
               component="h2"
+              sx={{ fontWeight: "500", color: "#364A63" }}
+              gutterBottom
             >
-              Payment will be sent via {value}.
+              Add Bank Account
+            </Typography>
+            <Typography color="GrayText">
+              Add your bank information to withdraw your funds.
             </Typography>
             <Divider />
-            <Box sx={{ display: "flex", flexDirection: "column" }}>
-              {value === "Bank Transfer" ? (
-                <>
+            <Box sx={{ my: 3 }}>
+              <Grid container spacing={3}>
+                <Grid item xs={12} md={6}>
                   <TextField
-                    label="Enter Bank Name"
-                    sx={{ mt: 5, mb: 3 }}
-                    inputRef={bankNameRef}
-                  />
-                  <TextField
-                    sx={{ mb: 3 }}
-                    label="Enter Account Name"
+                    label="Account Holder Name"
                     inputRef={accountNameRef}
+                    fullWidth
                   />
+                </Grid>
+                <Grid item xs={12} md={6}>
                   <TextField
-                    sx={{ mb: 3 }}
-                    label="Enter Account Number"
+                    label="Account Number"
                     inputRef={accountNumberRef}
+                    fullWidth
                   />
+                </Grid>
+              </Grid>
+              <Grid container spacing={3} sx={{ my: 2 }}>
+                <Grid item xs={12} md={6}>
                   <TextField
-                    sx={{ mb: 3 }}
-                    label="Enter Amount"
-                    inputRef={withdrawalAmtRef}
+                    label="Bank Location/Country"
+                    inputRef={bankLocationRef}
+                    fullWidth
                   />
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={withdrawMethod}
-                  >
-                    Submit
-                  </Button>
-                </>
-              ) : (
-                <>
+                </Grid>
+                <Grid item xs={12} md={6}>
                   <TextField
-                    label="Enter Address"
-                    sx={{ mt: 5, mb: 3 }}
+                    label="Bank Name"
+                    inputRef={bankNameRef}
+                    fullWidth
+                  />
+                </Grid>
+              </Grid>
+              <Grid container spacing={3} sx={{ my: 2 }}>
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    label="Branch Name"
+                    inputRef={bankBranchRef}
+                    fullWidth
+                  />
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    label="Swiss Code/BIC"
+                    inputRef={swissRef}
+                    fullWidth
+                  />
+                </Grid>
+              </Grid>
+              <Box sx={{ my: 3 }}>
+                <TextField
+                  label="Amount"
+                  inputRef={withdrawalAmtRef}
+                  fullWidth
+                />
+              </Box>
+              <Box sx={{ my: 3 }}>
+                <TextField label="Enter Remarks (optional)" fullWidth />
+              </Box>
+              <Alert severity="warning">
+                Please Make sure the details are correct,always double check
+              </Alert>
+              <Button
+                fullWidth
+                variant="outlined"
+                sx={{ my: 2 }}
+                onClick={bankMethod}
+              >
+                Submit
+              </Button>
+            </Box>
+          </Box>
+        </Fade>
+      </Modal>{" "}
+      <Modal
+        open={cryptoModal}
+        onClose={closeCryptoModal}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <Fade in={cryptoModal}>
+          <Box sx={style}>
+            <Typography
+              variant="h5"
+              component="h2"
+              sx={{ fontWeight: "500", color: "#364A63" }}
+              gutterBottom
+            >
+              Add Wallet Address
+            </Typography>
+            <Typography color="GrayText">
+              Enter your withdrawal details Below
+            </Typography>
+            <Divider />
+            <Box sx={{ my: 3 }}>
+              <Grid container spacing={3}>
+                <Grid item xs={12} md={6}>
+                  <FormControl size="small" fullWidth>
+                    <InputLabel>Select Coin</InputLabel>
+                    <Select inputRef={coinRef} label="Select Coin">
+                      {options.map((option) => (
+                        <MenuItem
+                          sx={{ color: "#fff" }}
+                          value={option.name}
+                          key={option.name}
+                        >
+                          {option.name}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <TextField
+                    label="Enter Wallet Address"
                     inputRef={addressRef}
+                    fullWidth
                   />
-                  <TextField
-                    sx={{ mb: 3 }}
-                    label="Enter Amount"
-                    inputRef={withdrawalAmtRef}
-                  />
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={withdrawMethod}
-                  >
-                    Submit
-                  </Button>
-                </>
-              )}
+                </Grid>
+              </Grid>
+              <Box sx={{ my: 3 }}>
+                <TextField
+                  label="Amount"
+                  inputRef={withdrawalAmtRef}
+                  fullWidth
+                />
+              </Box>
+              <Box sx={{ my: 3 }}>
+                <TextField label="Enter Remarks (optional)" fullWidth />
+              </Box>
+              <Alert severity="warning">
+                Please Make sure the details are correct,always double check
+              </Alert>
+              <Button
+                fullWidth
+                variant="outlined"
+                sx={{ my: 2 }}
+                onClick={cryptoMethod}
+              >
+                Submit
+              </Button>
             </Box>
           </Box>
         </Fade>

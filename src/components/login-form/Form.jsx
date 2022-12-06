@@ -110,6 +110,18 @@ const LoginForm = () => {
   return (
     <Box sx={{ p: { xs: 2, md: 6 } }}>
       <Box>
+        <Typography
+          variant="h6"
+          sx={{ fontWeight: "500", textTransform: "capitalize", color: "#fff" }}
+          gutterBottom
+        >
+          Login into account
+        </Typography>
+        <Typography variant="body2" color="GrayText">
+          Sign in into your account using your email and passcode.
+        </Typography>
+      </Box>
+      <Box>
         <TextField
           type="email"
           name="email"
@@ -117,6 +129,7 @@ const LoginForm = () => {
           label="Enter Email"
           fullWidth
           inputRef={emailRef}
+          sx={{ my: 2 }}
         />
         <FormControl variant="outlined" fullWidth>
           <InputLabel htmlFor="password">Password</InputLabel>

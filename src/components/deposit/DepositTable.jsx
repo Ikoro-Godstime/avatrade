@@ -1,13 +1,15 @@
 import React, { useState, useContext, useEffect } from "react";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Typography from "@mui/material/Typography";
-import Paper from "@mui/material/Paper";
 import moment from "moment";
+import {
+  Box,
+  Typography,
+  TableRow,
+  TableHead,
+  TableContainer,
+  TableCell,
+  TableBody,
+  Table,
+} from "@mui/material";
 import { toast } from "react-toastify";
 
 // import firebase function
@@ -53,43 +55,50 @@ const DepositTable = () => {
   }, [user.email]);
 
   return (
-    <TableContainer component={Paper} sx={{ mt: 6 }}>
-      {deposits.length > 0 ? (
-        <Table sx={{ minWidth: 400 }} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Amount</TableCell>
-              <TableCell>Payment Mode</TableCell>
-              <TableCell>Status</TableCell>
-              <TableCell>Date</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {deposits.map((deposit) => (
-              <TableRow
-                key={deposit.date}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                <TableCell component="th" scope="row">
-                  {deposit.amount}
-                </TableCell>
-                <TableCell>{deposit.method}</TableCell>
-                <TableCell>
-                  {deposit.approved ? "Approved" : "Pending"}
-                </TableCell>
-                <TableCell>
-                  {moment(deposit.date.at).format("YYYY/MM/DD")}
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      ) : (
-        <Typography variant="body1" sx={{ p: 2 }} component="div">
-          Currently no Deposit
+    <>
+      <Box>
+        <Typography variant="h6" sx={{ fontWeight: "500", py: 1, mt: 3 }}>
+          Deposit History
         </Typography>
-      )}
-    </TableContainer>
+      </Box>
+      <TableContainer sx={{ bgColor: "#F5F6FA" }}>
+        {deposits.length > 0 ? (
+          <Table sx={{ minWidth: 400 }} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell>Amount</TableCell>
+                <TableCell>Payment Mode</TableCell>
+                <TableCell>Status</TableCell>
+                <TableCell>Date</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {deposits.map((deposit) => (
+                <TableRow
+                  key={deposit.date}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell component="th" scope="row">
+                    {deposit.amount}
+                  </TableCell>
+                  <TableCell>{deposit.method}</TableCell>
+                  <TableCell>
+                    {deposit.approved ? "Approved" : "Pending"}
+                  </TableCell>
+                  <TableCell>
+                    {moment(deposit.date.toDate()).format("YYYY/MM/DD")}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        ) : (
+          <Typography variant="body1" sx={{ py: 2 }} component="div">
+            Currently no Deposit
+          </Typography>
+        )}
+      </TableContainer>
+    </>
   );
 };
 
