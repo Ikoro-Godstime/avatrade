@@ -1,51 +1,52 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Typography, Box, Paper, Grid, Button } from "@mui/material";
-import { getDoc, doc, updateDoc } from "firebase/firestore";
+// import { getDoc, doc, updateDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
-import { store } from "../../firebase";
-import { toast } from "react-toastify";
-import { UserContext } from "../../context/UserContext";
+// import { store } from "../../firebase";
+// import { toast } from "react-toastify";
+// import { UserContext } from "../../context/UserContext";
 import { plans } from "../Plan/plans";
 
 const Investment = () => {
-  toast.configure();
+  // toast.configure();
 
   const navigate = useNavigate();
 
-  const { user } = useContext(UserContext);
+  // const { user } = useContext(UserContext);
 
   const addInvestment = async (amount, plan) => {
-    try {
-      // get the user deposit
-      const docRef = doc(store, "/users", `${user.email}`);
-      const userDetails = await getDoc(docRef);
-      const balanceAmount = userDetails.data().balance;
-      const depositedAmount = userDetails.data().deposited;
-      const totalPackages = userDetails.data().totalPackages;
-      console.log({ balanceAmount, depositedAmount, totalPackages });
-      if ((amount > balanceAmount) | (amount > depositedAmount)) {
-        toast.error("insufficent Fund", {
-          theme: "colored",
-          position: "bottom-center",
-        });
-        navigate("/deposit");
-      } else {
-        await updateDoc(docRef, {
-          balance: depositedAmount - amount,
-          totalPackages: totalPackages + 1,
-          activePages: plan,
-        });
+    // try {
+    //   // get the user deposit
+    //   const docRef = doc(store, "/users", `${user.email}`);
+    //   const userDetails = await getDoc(docRef);
+    //   const balanceAmount = userDetails.data().balance;
+    //   const depositedAmount = userDetails.data().deposited;
+    //   const totalPackages = userDetails.data().totalPackages;
+    //   console.log({ balanceAmount, depositedAmount, totalPackages });
+    //   if ((amount > balanceAmount) | (amount > depositedAmount)) {
+    //     toast.error("insufficent Fund", {
+    //       theme: "colored",
+    //       position: "bottom-center",
+    //     });
+    //     navigate("/deposit");
+    //   } else {
+    //     await updateDoc(docRef, {
+    //       balance: depositedAmount - amount,
+    //       totalPackages: totalPackages + 1,
+    //       activePages: plan,
+    //     });
 
-        toast.info("Request Submitted", {
-          theme: "colored",
-          position: "top-center",
-        });
+    //     toast.info("Request Submitted", {
+    //       theme: "colored",
+    //       position: "top-center",
+    //     });
 
-        navigate("/dashboard");
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    //     navigate("/dashboard");
+    //   }
+    // } catch (error) {
+    //   console.log(error);
+    // }
+    navigate("/deposit");
   };
 
   return (

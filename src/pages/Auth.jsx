@@ -39,8 +39,8 @@ const Auth = () => {
   return (
     <>
       <Box sx={outerBox}>
-        <Container maxWidth="sm">
-          <Box sx={paperStyle}>
+        <Container sx={{ width: { sm: "90%", md: "40%" }, mx: "auto" }}>
+          <Box>
             <Paper sx={paperStyle}>
               <Box>
                 <Tabs value={value} onChange={handleChange} centered>

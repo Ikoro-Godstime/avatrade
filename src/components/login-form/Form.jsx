@@ -112,7 +112,7 @@ const LoginForm = () => {
       <Box>
         <Typography
           variant="h6"
-          sx={{ fontWeight: "500", textTransform: "capitalize", color: "#fff" }}
+          sx={{ fontWeight: "500", textTransform: "capitalize" }}
           gutterBottom
         >
           Login into account

@@ -9,6 +9,7 @@ export const outerBox = {
 export const paperStyle = {
   my: 3,
   padding: 1,
+  backgroundColor: "#fff",
 };
 
 export const alignItems = {

@@ -156,7 +156,7 @@ const RegisterForm = () => {
   return (
     <Box sx={{ p: 2 }}>
       <Box>
-        <Typography variant="h6" sx={{ mb: 1, color: "#fff" }}>
+        <Typography variant="h6" sx={{ mb: 1 }}>
           Create An Account
         </Typography>
         <Typography variant="body2" color="GrayText" sx={{ mb: 1 }}>
@@ -256,7 +256,11 @@ const RegisterForm = () => {
           <InputLabel>Country</InputLabel>
           <Select inputRef={countryRef} label="Select Country" size="small">
             {country.map((count, index) => (
-              <MenuItem value={count.main} key={index}>
+              <MenuItem
+                value={count.main}
+                key={index}
+                sx={{ bgcolor: "#fff", "&:hover": { bgColor: "#fff" } }}
+              >
                 {count.main}
               </MenuItem>
             ))}

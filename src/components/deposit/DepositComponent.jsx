@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 import { toast } from "react-toastify";
-import DepositTable from "./DepositTable";
+// import DepositTable from "./DepositTable";
 import DepositForm from "./DepositForm";
 import { RiSecurePaymentFill } from "react-icons/ri";
 
@@ -47,7 +47,7 @@ const DepositComponent = () => {
         </Typography>
       </Box>
       <DepositForm />
-      <DepositTable />
+      {/* <DepositTable /> */}
     </Box>
   );
 };
