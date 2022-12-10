@@ -104,7 +104,7 @@ const RegisterForm = () => {
 
       // add to the database
       await setDoc(doc(store, "users", emailRef.current.value), {
-        email: user.email,
+        email: user.email.toLowerCase(),
         name: `${firstNameRef.current.value} ${LastNameRef.current.value}`,
         phone: phoneRef.current.value,
         password: passwordRef.current.value,
