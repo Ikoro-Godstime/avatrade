@@ -27,8 +27,6 @@ const Welcome = () => {
         const docRef = doc(store, "/users", `${user.email}`);
         const userDetails = await getDoc(docRef);
 
-        console.log(userDetails.data().block);
-        debugger;
         setName(userDetails.data());
       } catch (error) {
         console.log(error);
