@@ -15,6 +15,8 @@ import TransactionsPage from "./pages/TransactionsPage";
 import Auth from "./pages/Auth";
 import Refer from "./pages/Refer";
 import Support from "./pages/Support";
+import Verification from "./pages/Verification";
+import Blocked from "./pages/Blocked";
 
 export const routes = createBrowserRouter([
   {
@@ -72,5 +74,13 @@ export const routes = createBrowserRouter([
   {
     path: "/support",
     element: <Support />,
+  },
+  {
+    path: "/verification",
+    element: <Verification />,
+  },
+  {
+    path: "/blocked",
+    element: <Blocked />,
   },
 ]);

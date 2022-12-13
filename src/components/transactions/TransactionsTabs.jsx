@@ -41,7 +41,7 @@ const TransactionTabs = () => {
       </Panel>
       <Box sx={{ mt: 10 }}>
         <Typography variant="caption">
-          All Rights Reserved © Highstrike.us 2022
+          All Rights Reserved © avatrade.cc 2022
         </Typography>
       </Box>
     </Box>

@@ -27,6 +27,8 @@ const Welcome = () => {
         const docRef = doc(store, "/users", `${user.email}`);
         const userDetails = await getDoc(docRef);
 
+        console.log(userDetails.data().block);
+        debugger;
         setName(userDetails.data());
       } catch (error) {
         console.log(error);
@@ -35,8 +37,6 @@ const Welcome = () => {
 
     fetchUserDetails();
   }, [user.email]);
-
-  
 
   return (
     <Box>
@@ -82,40 +82,46 @@ const Welcome = () => {
           </Button>
         </Box>
       </Box>
-      <Box>
-        <Alert variant="outlined" severity="warning">
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
-            <Box>
-              <Typography variant="body1">
-                Add an account that you’d like to receive payment or withdraw
-                fund.
-              </Typography>
+      {!name ? (
+        <Skeleton variant="rectangular" height="50px" width="100%" />
+      ) : name.verified ? (
+        <></>
+      ) : (
+        <Box>
+          <Alert severity="info">
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
+              <Box>
+                <Typography variant="body2">
+                  To be compliant and to protect your account, please verify
+                  your identity by submitting document.
+                </Typography>
+              </Box>
+              <Box>
+                <Button
+                  sx={{
+                    fontWeight: "500",
+                    backgroundColor: "dodgerblue",
+                    my: 2,
+                    "&:hover": {
+                      backgroundColor: "dodgerblue",
+                      color: "#fff",
+                    },
+                  }}
+                  size="small"
+                  onClick={() => navigate("/verification")}
+                >
+                  Start Now
+                </Button>
+              </Box>
             </Box>
-            <Box>
-              <Button
-                sx={{
-                  fontWeight: "500",
-                  backgroundColor: "orange",
-                  my: 2,
-                  "&:hover": {
-                    backgroundColor: "lightyellow",
-                    color: "orange",
-                  },
-                }}
-                size="small"
-                onClick={() => navigate("/withdraw")}
-              >
-                Add Account
-              </Button>
-            </Box>
-          </Box>
-        </Alert>
-      </Box>
+          </Alert>
+        </Box>
+      )}
     </Box>
   );
 };
