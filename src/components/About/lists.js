@@ -1,30 +1,28 @@
 export const about = [
   {
     id: 1,
-    title: "Signals",
-    img: "https://highstrike.com/wp-content/uploads/2022/06/colored-signal-icon.svg",
+    title: "Professional and patient",
     about:
-      "Let our team of professional traders walk you through your trades every day.",
+      "Very happy with the professionalism and patience will working me through my account",
+    person: "John K",
   },
   {
     id: 2,
-    title: "Training",
-    img: "https://highstrike.com/wp-content/uploads/2022/06/colored-training-icon.svg",
+    title: "Gives peace of mind",
     about:
-      "We make it easy to navigate our platform with step-by-step video tutorials.",
+      "As a new customer i've had a pleasant experience setting my account with a broker that is regulated by nine (9) international Jurisdiction which gives me peace of mind",
+    person: "Eric W",
   },
   {
     id: 3,
-    title: "Live",
-    img: "https://highstrike.com/wp-content/uploads/2022/06/colored-live-icon.svg",
-    about:
-      "Get on live calls with our analysts as they break down their watches, & ask questions in real time.",
+    title: "Reliable Broker",
+    about: "I find Avatrade reliable and convenient",
+    person: "sammy T",
   },
   {
     id: 4,
-    title: "Social",
-    img: "https://highstrike.com/wp-content/uploads/2022/06/colored-social-icon.svg",
-    about:
-      "Join our social media ecosystem, customize your profile, post your insights and content & grow your following.",
+    title: "Fantastic Platform",
+    about: "Fully Recommend this Broker.",
+    person: "Richard D",
   },
 ];

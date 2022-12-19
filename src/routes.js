@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 
 // ? Import Pages or Routes
-// import Home from "./pages/Home";
+import Home from "./pages/Home";
 import AboutPage from "./pages/AboutPage";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
@@ -21,7 +21,7 @@ import Blocked from "./pages/Blocked";
 export const routes = createBrowserRouter([
   {
     path: "/",
-    element: <Auth />,
+    element: <Home />,
   },
   {
     path: "/about",

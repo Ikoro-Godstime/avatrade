@@ -1,137 +1,84 @@
-import React from "react";
-import { Box, Typography, Container } from "@mui/material";
-import { IconContext } from "react-icons";
+import { Box, Typography, Container, Grid } from "@mui/material";
+import { reasons } from "./reasons";
 
 const Reason = () => {
   return (
-    <IconContext.Provider value={{ size: "40px" }}>
-      <Container>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            p: 2,
-          }}
-        >
-          <Box>
-            <Box>
-              <Typography
-                variant="h5"
-                sx={{
-                  mb: 4,
-                  fontStyle: "italics",
-                  fontSize: "2rem",
-                  width: { md: "60%", sm: "100%" },
-                  fontWeight: "600",
-                }}
-              >
-                HighStrike is a Self-Directed Trader’s Nerve Center
-              </Typography>
-            </Box>
-            <Box sx={{ display: "flex", mb: 3 }}>
-              <Box sx={{ mr: 3 }}>
-                <Typography
-                  variant="body1"
-                  sx={{
-                    backgroundColor: "#f5f7fe",
-                    borderRadius: 2,
-                    p: 2,
-                    fontWeight: "bold",
-                    "&:hover": {
-                      color: "#fff",
-                      backgroundColor: "#1e532d",
-                    },
-                  }}
-                >
-                  1
-                </Typography>
-              </Box>
-              <Box>
-                <Typography
-                  variant="body1"
-                  sx={{
-                    color: "#1f4d0b",
-                    fontSize: "1.3rem",
-                    fontWeight: "bold",
-                  }}
-                >
-                  Our Mission
-                </Typography>
-                <Typography
-                  sx={{ color: "#404046", width: { sm: "100%", md: "60%" } }}
-                >
-                  HighStrike partners with professional traders around the globe
-                  to provide you a hub of information, education, strategy, live
-                  streams, social media ecosystsems and buy/sell signals for
-                  self-directed traders and investors. Our mission is to help
-                  you make better trading decisions faster.
-                </Typography>
-              </Box>
-            </Box>
-            <Box sx={{ display: "flex" }}>
-              <Box sx={{ mr: 3 }}>
-                <Typography
-                  variant="body1"
-                  sx={{
-                    backgroundColor: "#f5f7fe",
-                    borderRadius: 2,
-                    p: 2,
-                    fontWeight: "bold",
-                    "&:hover": {
-                      color: "#fff",
-                      backgroundColor: "#1e532d",
-                    },
-                  }}
-                >
-                  2
-                </Typography>
-              </Box>
-              <Box>
-                <Typography
-                  variant="body1"
-                  sx={{
-                    color: "#1f4d0b",
-                    fontSize: "1.3rem",
-                    fontWeight: "bold",
-                  }}
-                >
-                  Our Commitment
-                </Typography>
-                <Typography
-                  sx={{ color: "#404046", width: { sm: "100%", md: "60%" } }}
-                >
-                  As the popularity of trading and investing shifts from
-                  institutional to individual management, we are committed to
-                  creating efficient and powerful services for those who what to
-                  take charge of their own trades and investments.
-                </Typography>
-              </Box>
-            </Box>
-          </Box>
-          <Box
-            sx={{
-              alignSelf: "center",
-              width: "50%",
-              display: { xs: "none", md: "block" },
-              position: "relative",
-            }}
-          >
-            <img
-              src="https://highstrike.com/wp-content/uploads/2022/06/mobile-app-img.svg"
-              alt="phone"
-            />
-            <Box
-              sx={{ position: "absolute", top: "50%", mb: 4, width: "100%" }}
+    <>
+      <Box sx={{ backgroundColor: "#0B253A" }}>
+        <Container>
+          <Box sx={{ py: 4 }}>
+            <Typography
+              variant="h4"
+              component="h4"
+              gutterBottom
+              sx={{ color: "#fff", pt: 3, fontWeight: "700", fontSize: "30px" }}
             >
-              <img
-                src="https://highstrike.com/wp-content/uploads/2022/06/background-img-pattern.png"
-                alt="phone"
-              />
-            </Box>
+              What Makes AvaTrade Different?
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h4"
+              gutterBottom
+              sx={{ color: "#fff", fontWeight: "300", fontSize: "20px" }}
+            >
+              Join Over 1 Million Returning Clients who already made the right
+              choice
+            </Typography>
           </Box>
-        </Box>
-      </Container>
-    </IconContext.Provider>
+          <Grid container spacing={3} sx={{ mt: { xs: 2, md: 5 } }}>
+            {reasons.map((reason) => (
+              <Grid item xs={12} md={4} key={reason.id}>
+                <Box sx={{ position: "relative", py: 3 }}>
+                  <Box>
+                    <Typography
+                      sx={{
+                        color: "#fff",
+                        fontSize: "24px",
+                        fontWeight: "700",
+                        mb: 3,
+                        textTransform: "capitalize",
+                      }}
+                    >
+                      {reason.title}
+                    </Typography>
+                    <Typography
+                      sx={{
+                        color: "#fff",
+                        fontSize: "18px",
+                        fontWeight: "300",
+                      }}
+                    >
+                      {reason.about}
+                    </Typography>
+                  </Box>
+                  <Box
+                    sx={{
+                      position: "absolute",
+                      top: "0",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Typography
+                      variant="h1"
+                      sx={{
+                        color: "#f1f1f1",
+                        fontSize: { xs: "150px", md: "250px" },
+                        fontWeight: "500",
+                        opacity: "0.3",
+                      }}
+                    >
+                      {reason.id}
+                    </Typography>
+                  </Box>
+                </Box>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </Box>
+    </>
   );
 };
 

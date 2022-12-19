@@ -50,7 +50,7 @@ const Prices = () => {
                   <Typography variant="body1">Deposited</Typography>
                   <Typography
                     variant="subtitle1"
-                    sx={{ fontWeight: "bold" }}
+                    sx={{ fontWeight: "400" }}
                   >{`$${details.deposited.toLocaleString(
                     "en-US"
                   )}.00`}</Typography>
@@ -72,7 +72,7 @@ const Prices = () => {
                   <Typography variant="body1">Profit</Typography>
                   <Typography
                     variant="subtitle1"
-                    sx={{ fontWeight: "bold" }}
+                    sx={{ fontWeight: "400" }}
                   >{`$${details.profit.toLocaleString(
                     "en-US"
                   )}.00`}</Typography>
@@ -94,7 +94,7 @@ const Prices = () => {
                   <Typography variant="body1">Bonus</Typography>
                   <Typography
                     variant="subtitle1"
-                    sx={{ fontWeight: "bold" }}
+                    sx={{ fontWeight: "400" }}
                   >{`$${details.bonus.toLocaleString("en-US")}.00`}</Typography>
                 </Box>
               </Box>
@@ -114,7 +114,7 @@ const Prices = () => {
                   <Typography variant="body1">Ref. Bonus</Typography>
                   <Typography
                     variant="subtitle1"
-                    sx={{ fontWeight: "bold" }}
+                    sx={{ fontWeight: "400" }}
                   >{`$${details.refBonus.toLocaleString(
                     "en-US"
                   )}.00`}</Typography>
@@ -136,7 +136,7 @@ const Prices = () => {
                   <Typography variant="body1">Balance</Typography>
                   <Typography
                     variant="subtitle1"
-                    sx={{ fontWeight: "bold" }}
+                    sx={{ fontWeight: "400" }}
                   >{`$${details.balance.toLocaleString(
                     "en-US"
                   )}.00`}</Typography>

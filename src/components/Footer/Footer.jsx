@@ -1,248 +1,60 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import {
-  Box,
-  Container,
-  Divider,
-  Grid,
-  IconButton,
-  Typography,
-} from "@mui/material";
-import { FaChevronRight, FaInstagram, FaTwitter } from "react-icons/fa";
-import "./footer.css";
+import { Box, Container, Grid, Typography } from "@mui/material";
+import FooterForm from "./FooterForm";
 
 const Footer = () => {
   return (
-    <Box sx={{ backgroundColor: "#2e5f18", p: 3 }} className="footer">
+    <Box sx={{ backgroundColor: "#0B253A", p: 4 }}>
       <Container>
-        <Grid container spacing={3}>
-          <Grid item xs={12} md={3}>
-            <Box>
-              <Link to="/">
-                <Box
-                  sx={{
-                    width: { xs: "40%" },
-                  }}
-                  s
-                >
-                  <img
-                    src="https://highstrike.com/wp-content/themes/highstrike/assets/images/footer-logo.svg"
-                    alt="logo"
-                  />
-                </Box>
-                <Typography
-                  gutterBottom
-                  sx={{ color: "#fff", fontWeight: "bold" }}
-                >
-                  Support
-                </Typography>
-                <Typography sx={{ color: "#fff" }}>
-                  support@highstrike.us
-                </Typography>
-              </Link>
-            </Box>
-          </Grid>
-          <Grid item xs={12} md={3}>
-            <Box>
-              <Typography
-                sx={{
-                  fontWeight: "bold",
-                  fontSize: "1.2rem",
-                  color: "#ffffff",
-                  mb: 4,
-                }}
-              >
-                Navigation
+        <Box
+          sx={{
+            width: { xs: "10%", md: "5%" },
+            mx: "auto",
+            my: 5,
+          }}
+        >
+          <img src="/img/footer-logo.png" alt="footer logo" />
+        </Box>
+        <Grid container spacing={5}>
+          <Grid item xs={12} md={8}>
+            <Box sx={{ mt: 3 }}>
+              <Typography variant="body1" component="p" sx={{ color: "#fff" }}>
+                AVA Trade EU Ltd is regulated by the Central Bank of Ireland.
+                (No.C53877) Ava Trade Markets Ltd. is regulated by the B.V.I
+                Financial Services Commission Ava Capital Markets Australia Pty
+                Ltd is regulated by the ASIC No.406684.
               </Typography>
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-between",
-                }}
-              >
-                <Link
-                  to="/"
-                  style={{
-                    marginTop: "0.5rem",
-                    fontWeight: "400",
-                    color: "#fff",
-                    fontSize: "0.8rem",
-                  }}
-                >
-                  Home
-                </Link>
-                <Link
-                  to="#"
-                  style={{
-                    marginTop: "0.5rem",
-                    fontWeight: "400",
-                    color: "#fff",
-                    fontSize: "0.8rem",
-                  }}
-                >
-                  About Us
-                </Link>
-                <Link
-                  to="#"
-                  style={{
-                    marginTop: "0.5rem",
-                    fontWeight: "400",
-                    color: "#fff",
-                    fontSize: "0.8rem",
-                  }}
-                >
-                  Blog
-                </Link>
-                <Link
-                  to="#"
-                  style={{
-                    marginTop: "0.5rem",
-                    fontWeight: "400",
-                    color: "#fff",
-                    fontSize: "0.8rem",
-                  }}
-                >
-                  AlphaPass
-                </Link>
-                <Link
-                  to="#"
-                  style={{
-                    marginTop: "0.5rem",
-                    fontWeight: "400",
-                    color: "#fff",
-                    fontSize: "0.8rem",
-                  }}
-                >
-                  HSX
-                </Link>
-              </Box>
-            </Box>
-          </Grid>
-          <Grid item xs={12} md={3}>
-            <Box>
-              <Typography
-                sx={{
-                  fontWeight: "bold",
-                  fontSize: "1.2rem",
-                  color: "#ffffff",
-                  mb: 4,
-                }}
-              >
-                Quick Links
+              <Typography variant="body1" component="p" sx={{ color: "#fff" }}>
+                Ava Capital Markets Pty is regulated by the South African
+                Financial Sector Conduct Authority (FSCA No.45984).
               </Typography>
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-between",
-                }}
-              >
-                <Link
-                  to="#"
-                  style={{
-                    marginTop: "0.5rem",
-                    fontWeight: "400",
-                    color: "#fff",
-                    fontSize: "0.8rem",
-                  }}
-                >
-                  Terms of Use
-                </Link>
-                <Link
-                  to="#"
-                  style={{
-                    marginTop: "0.5rem",
-                    fontWeight: "400",
-                    color: "#fff",
-                    fontSize: "0.8rem",
-                  }}
-                >
-                  Privacy Policy
-                </Link>
-                <Link
-                  to="#"
-                  style={{
-                    marginTop: "0.5rem",
-                    fontWeight: "400",
-                    color: "#fff",
-                    fontSize: "0.8rem",
-                  }}
-                >
-                  Refund Policy
-                </Link>
-                <Link
-                  to="#"
-                  style={{
-                    marginTop: "0.5rem",
-                    fontWeight: "400",
-                    color: "#fff",
-                    fontSize: "0.8rem",
-                  }}
-                >
-                  FAQ
-                </Link>
-                <Link
-                  to="/auth"
-                  style={{
-                    marginTop: "0.5rem",
-                    fontWeight: "400",
-                    color: "#fff",
-                    fontSize: "0.8rem",
-                  }}
-                >
-                  Login
-                </Link>
-              </Box>
+              <Typography variant="body1" component="p" sx={{ color: "#fff" }}>
+                Ava Trade Japan K.K. is licensed and regulated in Japan by the
+                Financial Services Agency (License No.: 1662), the Financial
+                Futures Association of Japan (License No.: 1574).
+              </Typography>
+              <Typography variant="body1" component="p" sx={{ color: "#fff" }}>
+                Ava Trade Middle East Ltd is regulated by the Abu Dhabi Global
+                Markets (ADGM) Financial Regulatory Services Authority (FRSA)
+                (No.190018). DT Direct Investment Hub Ltd. is regulated by the
+                Cyprus Securities and Exchange Commission (No. 347/17).
+              </Typography>
+              <Typography variant="body1" component="p" sx={{ color: "#fff" }}>
+                ATrade Ltd is regulated in Israel by the Israel Securities
+                Authority (No. 514666577). Read AvaTrade risk disclosure before
+                trading Forex, CFD’s, and/or FX Options. Forex, CFD and FX
+                Options trading involves substantial risk of loss and is not
+                suitable for all investors.
+              </Typography>
+              <Typography variant="body1" component="p" sx={{ color: "#fff" }}>
+                Copyright © 2007-2022 Ava Trade Markets Ltd. All rights
+                reserved.
+              </Typography>
             </Box>
           </Grid>
-          <Grid item xs={12} md={3}>
-            <Box>
-              <Box>
-                <Typography sx={{ fontWeight: "bold", color: "#fff", mb: 2 }}>
-                  Follow Us
-                </Typography>
-                <Box>
-                  <FaTwitter color="#fff" style={{ marginRight: "0.4rem" }} />
-                  <FaInstagram color="#fff" />
-                </Box>
-              </Box>
-              <Box>
-                <Typography sx={{ fontWeight: "bold", color: "#fff", my: 2 }}>
-                  Subscribe
-                </Typography>
-                <Box>
-                  <input
-                    type="email"
-                    placholder="Your Email"
-                    className="input"
-                  />
-
-                  <IconButton
-                    sx={{
-                      backgroundColor: "#0d6efd",
-                      "&:hover": {
-                        backgroundColor: "#0d6efd",
-                      },
-                    }}
-                  >
-                    <FaChevronRight color="#fff" />
-                  </IconButton>
-                </Box>
-              </Box>
-            </Box>
+          <Grid item xs={12} md={4}>
+            <FooterForm />
           </Grid>
         </Grid>
-        <Divider sx={{ color: "#fff", mt: 4 }} />
-        <Box>
-          <Typography
-            variant="body1"
-            textAlign="center"
-            sx={{ mt: 5, mb: 2, color: "#fff" }}
-          >
-            © Copyright 2022. HighStrike Inc.
-          </Typography>
-        </Box>
       </Container>
     </Box>
   );

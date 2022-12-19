@@ -1,81 +1,68 @@
 import React from "react";
 import { Box, Typography, Grid, Paper, Container } from "@mui/material";
+import Slider from "react-slick";
 import { about } from "./lists";
 
 const About = () => {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+
   return (
-    <React.Fragment>
-      <Box sx={{ mt: 6 }}>
-        <Box>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              flexDirection: "column",
-            }}
-          >
-            <Typography
-              variant="body1"
-              textAlign="center"
-              gutterBottom
+    <Box>
+      <Typography
+        variant="h4"
+        sx={{ color: "#0B253A", my: 2, fontWeight: "semiBold" }}
+        textAlign="center"
+      >
+        You're in good Company
+      </Typography>
+      <div>
+        <Slider {...settings}>
+          {about.map((ab) => (
+            <Box
               sx={{
-                color: "#7ed957",
-                fontSize: "0.6rem",
-                backgroundColor: "#f5f7fe",
-                borderRadius: 2,
-                p: 1,
-                display: "inline-block",
+                p: 2,
+                backgroundColor: "#fff",
+                display: "flex",
+                alignItems: "center",
+                flexDirection: "column",
+                justifyContent: "center",
+                height: "300px",
               }}
             >
-              HIGHSTRIKE
-            </Typography>
-            <Typography
-              variant="h4"
-              component="p"
-              textAlign="center"
-              sx={{ color: "#1f4d0b", fontStyle: "italics" }}
-            >
-              How it Works:
-            </Typography>
-          </Box>
-          <Container sx={{ mt: 3 }}>
-            <Grid container spacing={2}>
-              {about.map((about) => (
-                <Grid item xs={12} md={3}>
-                  <Paper
-                    sx={{
-                      p: { xs: 2, md: 3 },
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                    }}
-                    elevation={0}
-                  >
-                    <Box sx={{ width: { xs: "10%", md: "20%" } }}>
-                      <img src={about.img} alt={about.title} />
-                    </Box>
-                    <Box sx={{ mt: 2 }}>
-                      <Typography
-                        variant="h6"
-                        textAlign="center"
-                        gutterBottom
-                        sx={{ fontWeight: "bold" }}
-                      >
-                        {about.title}
-                      </Typography>
-                      <Typography variant="body1" textAlign="center">
-                        {about.about}
-                      </Typography>
-                    </Box>
-                  </Paper>
-                </Grid>
-              ))}
-            </Grid>
-          </Container>
-        </Box>
-      </Box>
-    </React.Fragment>
+              <Typography
+                sx={{ color: "#0B253A", fontWeight: "400" }}
+                textAlign="center"
+              >
+                {ab.title}
+              </Typography>
+
+              <Typography sx={{ color: "#000", my: 3 }} textAlign="center">
+                {ab.about}
+              </Typography>
+              <Typography sx={{ color: "#cecece", my: 3 }} textAlign="center">
+                {ab.person}
+              </Typography>
+              <Box
+                sx={{
+                  width: "10%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <img src="/img/trustpilotstart.png" alt="trustpilot" />
+              </Box>
+            </Box>
+          ))}
+        </Slider>
+      </div>
+    </Box>
   );
 };
 

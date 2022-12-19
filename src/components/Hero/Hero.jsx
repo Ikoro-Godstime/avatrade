@@ -1,141 +1,102 @@
 import React from "react";
-import { Box, Typography, Button } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-
-import "./hero.css";
+import { Box, Typography, Button, Grid, Container, Paper } from "@mui/material";
+import { Link } from "react-router-dom";
+import { items } from "./items";
 
 const Hero = () => {
-  const navigate = useNavigate();
-
   return (
     <>
-      <Box
-        sx={{
-          width: {
-            md: "91%",
-            sm: "100%",
-          },
-          mx: "auto",
-          mt: 0,
-          mb: 3,
-          borderRadius: 2,
-          padding: 3,
-          position: "relative",
+      <div
+        style={{
+          backgroundImage: "url(/img/bg.jpg)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
       >
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            flexDirection: {
-              xs: "column",
-              md: "row",
-            },
-          }}
-        >
-          <Box>
-            <Box>
+        <Container sx={{ p: { xs: 2, md: 6 } }}>
+          <Grid container spacing={3}>
+            <Grid
+              item
+              xs={12}
+              md={7}
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: { xs: "center", md: "flex-start" },
+                justifyContent: { xs: "center", md: "flex-start" },
+              }}
+            >
               <Typography
-                variant="h6"
+                variant="h4"
+                component="h1"
+                gutterBottom
                 sx={{
-                  color: "#000000",
-                  bgcolor: "#ffffff",
-                  display: "inline-block",
-                  p: 1,
-                  borderRadius: 3,
-                  fontSize: ".8rem",
-                  fontWeight: "bold",
+                  color: "#0B253A",
+                  fontWeight: "600",
+                  textAlign: { xs: "center", md: "left" },
                 }}
               >
-                LAUNCH DISCOUNT LIVE
-              </Typography>
-              <Typography
-                variant="h2"
-                sx={{ color: "black", fontWeight: "700", my: 4 }}
-              >
-                HIGHSTRIKE
+                A World-Class Trading Experience
               </Typography>
               <Typography
                 variant="body1"
-                sx={{ fontSize: "1.2rem", my: 2, fontWeight: "500" }}
-              >
-                Connect with thousands of self-directed traders and investors
-                through live stream, chat and social media ecosystem.
-              </Typography>
-              <Button
-                variant="contained"
+                component="p"
+                gutterBottom
                 sx={{
-                  fontSize: "1.2rem",
-                  backgroundColor: "#7ed957",
-                  color: "#000000",
-                  cursor: "pointer",
-                  "&:hover": {
-                    backgroundColor: "#7ed957",
-                    color: "#fff",
-                  },
+                  fontWeight: "300",
+                  textAlign: { xs: "center", md: "left" },
                 }}
-                onClick={() => navigate("/auth")}
               >
-                Join Our Team Today
-              </Button>
-            </Box>
-            <Box sx={{ my: 2 }}>
-              <Typography
-                variant="body1"
-                sx={{ my: 3, fontWeight: "600", fontSize: "1rem" }}
-              >
-                We are currently hosted on a Discord server but will <br />
-                be moving to our own App this summer.
+                Be empowered to trade CFDs on FX, Stocks, Commodities, Crypto,
+                Indices & Options. Get advanced tools, personalised support,
+                uncompromising security.
               </Typography>
-              <Typography
-                variant="body1"
-                sx={{ fontWeight: "700", color: "#000000", my: 2 }}
-              >
-                Join NOW while the price is still low!
-              </Typography>
-              <Typography variant="body1" sx={{ mb: 2, fontWeight: "500" }}>
-                (Membership doubles when the app is live)
-              </Typography>
-              <Typography
-                variant="body2"
-                color="lightgreen"
-                sx={{ fontSize: "0.8rem" }}
-              >
-                Have a coupon code? Click to apply it.
-              </Typography>
-            </Box>
-          </Box>
-          <Box
-            sx={{
-              zIndex: "999",
-            }}
-          >
-            <img
-              src="https://highstrike.com/wp-content/uploads/2022/06/banner-mobile-img.png"
-              alt="phone"
-            />
-          </Box>
-          <Box
-            sx={{
-              position: "absolute",
-              top: "0",
-              left: 0,
-              width: "100%",
-              height: "100%",
-              zIndex: {
-                xs: -2,
-                md: 0,
-              },
-            }}
-          >
-            <img
-              src="https://highstrike.com/wp-content/uploads/2022/06/banner-bg.png"
-              alt="phone"
-            />
-          </Box>
-        </Box>
-      </Box>
+              <Link to="/auth">
+                <Button
+                  color="warning"
+                  sx={{ py: 1, borderRadius: "3rem", fontSize: "16px", mt: 3 }}
+                >
+                  Register Now
+                </Button>
+              </Link>
+              <Box sx={{ width: "30%", mt: 3 }}>
+                <img src="/img/trustpilotstart.png" alt="trustPilot" />
+              </Box>
+            </Grid>
+            <Grid item xs={12} md={5}>
+              {items.map((item) => (
+                <Box
+                  component={Paper}
+                  sx={{
+                    mb: 2,
+                    p: 2,
+                    backgroundColor: "#f4f5f5",
+                    cursor: "pointer",
+                  }}
+                >
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    <Box sx={{ width: "8%" }}>
+                      <img src={item.logo} alt={item.quota} />
+                    </Box>
+                    <Typography sx={{ fontWeight: "500" }} textAlign="left">
+                      {item.quota}
+                    </Typography>
+                    <Typography>{item.price}</Typography>
+                    <Typography>{item.percent}</Typography>
+                    <Typography>Trade</Typography>
+                  </Box>
+                </Box>
+              ))}
+            </Grid>
+          </Grid>
+        </Container>
+      </div>
     </>
   );
 };

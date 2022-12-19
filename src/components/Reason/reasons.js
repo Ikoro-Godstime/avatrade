@@ -1,52 +1,32 @@
-import {
-  FaStackExchange,
-  FaConnectdevelop,
-  FaHandshake,
-  FaBusinessTime,
-  FaHeadset,
-  FaShieldVirus,
-} from "react-icons/fa";
-
 export const reasons = [
   {
     id: 1,
-    title: "STABLE AND PROFITABLE",
+    title: "we want you to succeed",
     about:
-      "The banks can no longer be trusted!, it's time we Invest. You have your own money but it just wont grow that way, hence we have designed a system that can help you invest massively without fear. Buy, Sell & invest in a variety of channels without having to worry much",
-    icon: <FaStackExchange />,
+      "From developing the best educational materials out there, to providing daily market analysis updates and live webinars, we are as interested in your success as you are.",
   },
   {
     id: 2,
-    title: "CONNECT",
+    title: "we believe in endless possibilities",
     about:
-      "The market is wide for everyone, stay in the flow with potential minded users on the platform using our secured system for transactions.",
-    icon: <FaConnectdevelop />,
+      "Access the world’s most popular instruments, ranging from forex pairs to CFDs on stocks, indices, commodities, and cryptocurrencies - all at the palm of your hand.",
   },
   {
     id: 3,
-    title: "REFERRALS PROGRAM",
-    about: "Refer and earn.",
-    icon: <FaHandshake />,
+    title: "Great Trading Condition",
+    about:
+      "Hedging is allowed, without any restrictions on short selling and scalping. We provide fast and reliable order execution, as well as ultra-low spreads.",
   },
   {
     id: 4,
-    title: "TRADE",
+    title: "we believe you deserve the best",
     about:
-      "It pays to Invest. earn efficiently with Crypto currency on our platform with a high return rates using our verified crypto network.",
-    icon: <FaBusinessTime />,
+      "Take advantage of our Expert Advisors,copy trading  platforms and 24/7 crypto trading. Try our unique risk management tool AvaProtectTM, or utilise the Trading Central automated analysis add-on..",
   },
   {
     id: 5,
-    title: "24/7 CUSTOMER SUPPORT",
+    title: "We love to stay in touch",
     about:
-      "Our experienced and competent specialists will come to your aid any time, day or night. They are real life savers, who are always ready to answer every question and provide one-on-one help in each individual case.",
-    icon: <FaHeadset />,
-  },
-  {
-    id: 6,
-    title: "ULTIMATE SECURITY",
-    about:
-      "We've spent considerable time on the market - we know what it mean to invest in Cryptocurrency",
-    icon: <FaShieldVirus />,
+      "Stay up-to-date on the latest market news, promotions and offers! blog,twitter,facebook page,  Youtube channel,",
   },
 ];
